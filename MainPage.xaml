@@ -89,14 +89,17 @@
             </VerticalStackLayout>
 
             <Border Grid.Row="3" Style="{StaticResource CardStyle}" Margin="0,0,0,20">
-                <VerticalStackLayout Spacing="10">
-                    <Grid ColumnDefinitions="*, Auto">
-                        <Label Text="Today's Energy" FontAttributes="Bold" />
-                        <Label Text="45%" TextColor="{StaticResource AccentColor}" FontAttributes="Bold" />
-                    </Grid>
-                    <ProgressBar Progress="0.45" ProgressColor="{StaticResource AccentColor}" ScaleY="1.5" />
-                    <Label Text="12.5 kWh used today" FontSize="11" TextColor="{StaticResource TextSecondary}" />
-                </VerticalStackLayout>
+                <Grid ColumnDefinitions="Auto, *" ColumnSpacing="15">
+                    <Image Source="charging_battery.png" HeightRequest="40" WidthRequest="40" VerticalOptions="Center" />
+                    <VerticalStackLayout Grid.Column="1" Spacing="10">
+                        <Grid ColumnDefinitions="*, Auto">
+                            <Label Text="Today's Energy" FontAttributes="Bold" />
+                            <Label Grid.Column="1" Text="45%" TextColor="{StaticResource AccentColor}" FontAttributes="Bold" />
+                        </Grid>
+                        <ProgressBar Progress="0.45" ProgressColor="{StaticResource AccentColor}" ScaleY="1.5" />
+                        <Label Text="12.5 kWh used today" FontSize="11" TextColor="{StaticResource TextSecondary}" />
+                    </VerticalStackLayout>
+                </Grid>
             </Border>
 
         </Grid>
