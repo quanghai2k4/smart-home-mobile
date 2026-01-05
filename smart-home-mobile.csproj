@@ -49,6 +49,16 @@
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
 		
+		<!-- Custom Icons -->
+		<MauiImage Include="Resources\AppIcon\air_conditioner.png" />
+		<MauiImage Include="Resources\AppIcon\charging_battery.png" />
+		<MauiImage Include="Resources\AppIcon\fan.png" />
+		<MauiImage Include="Resources\AppIcon\light.png" />
+		<MauiImage Include="Resources\AppIcon\protect.png" />
+		<MauiImage Include="Resources\AppIcon\smart_home.png" />
+		<MauiImage Include="Resources\AppIcon\status.png" />
+		<MauiImage Include="Resources\AppIcon\temperature.png" />
+		
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
 
