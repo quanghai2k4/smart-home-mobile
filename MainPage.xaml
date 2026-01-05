@@ -1,7 +1,7 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="smart_home_mobile.MainPage"
-             BackgroundColor="{StaticResource PageBackground}">
+             Background="{StaticResource PageBackgroundBrush}">
 
     <ScrollView>
         <Grid RowDefinitions="Auto, Auto, Auto, Auto" 
@@ -9,7 +9,7 @@
               RowSpacing="20">
 
             <Grid Grid.Row="0" ColumnDefinitions="*, Auto">
-                <VerticalStackLayout>
+                <VerticalStackLayout Spacing="2">
                     <Label Text="Welcome Home," FontSize="14" TextColor="{StaticResource TextSecondary}" />
                     <Label Text="Smart Dashboard" Style="{StaticResource HeaderTitle}" />
                 </VerticalStackLayout>
@@ -22,67 +22,59 @@
                 </Image>
             </Grid>
 
-            <Border Grid.Row="1" StrokeShape="RoundRectangle 20" 
-                    BackgroundColor="{StaticResource PrimaryColor}" 
-                    Padding="20" StrokeThickness="0">
-                <Grid ColumnDefinitions="Auto, *" ColumnSpacing="15">
-                    <Image Source="temperature.png" HeightRequest="50" WidthRequest="50" />
+            <Border Grid.Row="1" Style="{StaticResource HeaderCardStyle}">
+                <Grid ColumnDefinitions="*, Auto" ColumnSpacing="15">
+                    <VerticalStackLayout>
+                        <Label Text="Good Evening!" TextColor="White" Opacity="0.98" FontSize="18" FontAttributes="Bold" />
+                        <Label Text="Your home is comfortable and secure" TextColor="White" Opacity="0.9" FontSize="13" />
+                    </VerticalStackLayout>
 
-                    <VerticalStackLayout Grid.Column="1" VerticalOptions="Center">
-                        <Label Text="Thai Nguyen" TextColor="White" Opacity="0.8" FontSize="12" />
-                        <Label Text="28°C" TextColor="White" FontSize="32" FontAttributes="Bold" />
-                        <Label Text="Cloudy &amp; Warm" TextColor="White" Opacity="0.9" />
+                    <VerticalStackLayout Grid.Column="1" HorizontalOptions="End" VerticalOptions="Center">
+                        <Label Text="24°C" TextColor="White" FontSize="34" FontAttributes="Bold" HorizontalOptions="End" />
+                        <Label Text="Perfect" TextColor="White" FontSize="12" HorizontalOptions="End" Opacity="0.95" />
                     </VerticalStackLayout>
                 </Grid>
             </Border>
 
-            <VerticalStackLayout Grid.Row="2" Spacing="10">
+            <VerticalStackLayout Grid.Row="2" Spacing="12">
                 <Label Text="Scenes &amp; Devices" Style="{StaticResource SectionTitle}" />
 
                 <Grid RowDefinitions="Auto, Auto" ColumnDefinitions="*, *" 
                       RowSpacing="15" ColumnSpacing="15">
 
-                    <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource CardStyle}">
-                        <Grid RowDefinitions="Auto, Auto, Auto" RowSpacing="5">
-                            <Image Source="light.png" HeightRequest="30" HorizontalOptions="Start" />
-                            <Label Grid.Row="1" Text="Living Light" FontAttributes="Bold" FontSize="14" Margin="0,5,0,0"/>
-                            <Grid Grid.Row="2" ColumnDefinitions="*, Auto">
-                                <Label Text="ON" TextColor="{StaticResource AccentColor}" FontSize="12" VerticalOptions="Center"/>
-                                <Switch Grid.Column="1" IsToggled="True" OnColor="{StaticResource AccentColor}" />
-                            </Grid>
+                    <Border Grid.Row="0" Grid.Column="0" Style="{StaticResource CompactCardStyle}">
+                        <Grid ColumnDefinitions="Auto, *, Auto" RowDefinitions="Auto, Auto" ColumnSpacing="12">
+                            <Image Source="light.png" HeightRequest="36" WidthRequest="36" VerticalOptions="Center" Grid.RowSpan="2" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="Ceiling Fan" FontAttributes="Bold" FontSize="16" TextColor="{StaticResource OnCardText}" />
+                            <Label Grid.Column="1" Grid.Row="1" Text="Living Room" FontSize="12" TextColor="{StaticResource TextSecondary}" Opacity="0.85" />
+                            <Switch Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" IsToggled="True" OnColor="{StaticResource AccentColor}" VerticalOptions="Center" />
                         </Grid>
                     </Border>
 
-                    <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource CardStyle}">
-                        <Grid RowDefinitions="Auto, Auto, Auto" RowSpacing="5">
-                            <Image Source="fan.png" HeightRequest="30" HorizontalOptions="Start" />
-                            <Label Grid.Row="1" Text="Smart Fan" FontAttributes="Bold" FontSize="14" Margin="0,5,0,0"/>
-                            <Grid Grid.Row="2" ColumnDefinitions="*, Auto">
-                                <Label Text="OFF" TextColor="{StaticResource TextSecondary}" FontSize="12" VerticalOptions="Center"/>
-                                <Switch Grid.Column="1" IsToggled="False" OnColor="{StaticResource AccentColor}" />
-                            </Grid>
+                    <Border Grid.Row="0" Grid.Column="1" Style="{StaticResource CompactCardStyle}">
+                        <Grid ColumnDefinitions="Auto, *, Auto" RowDefinitions="Auto, Auto" ColumnSpacing="12">
+                            <Image Source="fan.png" HeightRequest="36" WidthRequest="36" VerticalOptions="Center" Grid.RowSpan="2" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="Air Conditioner" FontAttributes="Bold" FontSize="16" TextColor="{StaticResource OnCardText}" />
+                            <Label Grid.Column="1" Grid.Row="1" Text="Bedroom" FontSize="12" TextColor="{StaticResource TextSecondary}" Opacity="0.85" />
+                            <Switch Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" IsToggled="False" OnColor="{StaticResource AccentColor}" VerticalOptions="Center" />
                         </Grid>
                     </Border>
 
-                    <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource CardStyle}">
-                        <Grid RowDefinitions="Auto, Auto, Auto" RowSpacing="5">
-                            <Image Source="air_conditioner.png" HeightRequest="30" HorizontalOptions="Start" />
-                            <Label Grid.Row="1" Text="Air Cond." FontAttributes="Bold" FontSize="14" Margin="0,5,0,0"/>
-                            <Grid Grid.Row="2" ColumnDefinitions="*, Auto">
-                                <Label Text="24°C" TextColor="{StaticResource AccentColor}" FontSize="12" VerticalOptions="Center"/>
-                                <Switch Grid.Column="1" IsToggled="True" OnColor="{StaticResource AccentColor}" />
-                            </Grid>
+                    <Border Grid.Row="1" Grid.Column="0" Style="{StaticResource CompactCardStyle}">
+                        <Grid ColumnDefinitions="Auto, *, Auto" RowDefinitions="Auto, Auto" ColumnSpacing="12">
+                            <Image Source="air_conditioner.png" HeightRequest="36" WidthRequest="36" VerticalOptions="Center" Grid.RowSpan="2" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="Smart Fan" FontAttributes="Bold" FontSize="16" TextColor="{StaticResource OnCardText}" />
+                            <Label Grid.Column="1" Grid.Row="1" Text="Office" FontSize="12" TextColor="{StaticResource TextSecondary}" Opacity="0.85" />
+                            <Switch Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" IsToggled="True" OnColor="{StaticResource AccentColor}" VerticalOptions="Center" />
                         </Grid>
                     </Border>
 
-                    <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource CardStyle}">
-                        <Grid RowDefinitions="Auto, Auto, Auto" RowSpacing="5">
-                            <Image Source="protect.png" HeightRequest="30" HorizontalOptions="Start" />
-                            <Label Grid.Row="1" Text="Security" FontAttributes="Bold" FontSize="14" Margin="0,5,0,0"/>
-                            <Grid Grid.Row="2" ColumnDefinitions="*, Auto">
-                                <Label Text="Armed" TextColor="{StaticResource AccentColor}" FontSize="12" VerticalOptions="Center"/>
-                                <Switch Grid.Column="1" IsToggled="True" OnColor="{StaticResource AccentColor}" />
-                            </Grid>
+                    <Border Grid.Row="1" Grid.Column="1" Style="{StaticResource CompactCardStyle}">
+                        <Grid ColumnDefinitions="Auto, *, Auto" RowDefinitions="Auto, Auto" ColumnSpacing="12">
+                            <Image Source="protect.png" HeightRequest="36" WidthRequest="36" VerticalOptions="Center" Grid.RowSpan="2" />
+                            <Label Grid.Column="1" Grid.Row="0" Text="Security" FontAttributes="Bold" FontSize="16" TextColor="{StaticResource OnCardText}" />
+                            <Label Grid.Column="1" Grid.Row="1" Text="Home" FontSize="12" TextColor="{StaticResource TextSecondary}" Opacity="0.85" />
+                            <Switch Grid.Column="2" Grid.Row="0" Grid.RowSpan="2" IsToggled="True" OnColor="{StaticResource AccentColor}" VerticalOptions="Center" />
                         </Grid>
                     </Border>
                 </Grid>

@@ -11,11 +11,15 @@
             </ResourceDictionary.MergedDictionaries>
 
             <Color x:Key="PrimaryColor">#2D3447</Color>
-            <Color x:Key="AccentColor">#409EFF</Color>
+            <Color x:Key="AccentColor">#5AA8FF</Color>
             <Color x:Key="PageBackground">#F0F2F5</Color>
             <Color x:Key="CardBackground">#FFFFFF</Color>
-            <Color x:Key="TextPrimary">#333333</Color>
-            <Color x:Key="TextSecondary">#757575</Color>
+            <Color x:Key="TextPrimary">#263238</Color>
+            <Color x:Key="TextSecondary">#6C7A86</Color>
+
+            <!-- Accessible foreground colors for gradient backgrounds and cards -->
+            <Color x:Key="OnPrimaryText">#FFFFFF</Color>
+            <Color x:Key="OnCardText">#263238</Color>
 
             <Style x:Key="HeaderTitle" TargetType="Label">
                 <Setter Property="FontSize" Value="22" />
@@ -33,13 +37,103 @@
             <Style x:Key="CardStyle" TargetType="Border">
                 <Setter Property="StrokeShape" Value="RoundRectangle 16" />
                 <Setter Property="StrokeThickness" Value="0" />
-                <Setter Property="BackgroundColor" Value="{StaticResource CardBackground}" />
+                <Setter Property="Background" Value="{StaticResource CardBackground}" />
                 <Setter Property="Padding" Value="15" />
                 <Setter Property="Shadow">
                     <Setter.Value>
-                        <Shadow Brush="Black" Offset="0,4" Opacity="0.1" Radius="10" />
+                        <Shadow Brush="#000" Offset="0,6" Opacity="0.06" Radius="16" />
                     </Setter.Value>
                 </Setter>
+            </Style>
+
+            <!-- Gradient and theme brushes to match a softer design -->
+            <LinearGradientBrush x:Key="HeaderGradientBrush" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#5AA8FF" Offset="0.0" />
+                <GradientStop Color="#8A6BFF" Offset="0.6" />
+                <GradientStop Color="#6B5CFF" Offset="1.0" />
+            </LinearGradientBrush>
+
+            <!-- Light neutral gradient for compact cards (easier on the eyes) -->
+            <LinearGradientBrush x:Key="CompactCardGradientBrush" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FFFFFF" Offset="0.0" />
+                <GradientStop Color="#F6F8FA" Offset="0.5" />
+                <GradientStop Color="#EEF3F8" Offset="1.0" />
+            </LinearGradientBrush>
+
+            <RadialGradientBrush x:Key="PageBackgroundBrush" Center="0.5,0.1" Radius="1">
+                <GradientStop Color="#FFFFFF" Offset="0" />
+                <GradientStop Color="#F7FAFD" Offset="0.6" />
+                <GradientStop Color="#F2F8FF" Offset="1" />
+            </RadialGradientBrush>
+
+            <SolidColorBrush x:Key="CardBrush" Color="{StaticResource CardBackground}" />
+            <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}" />
+
+            <!-- Header card (big gradient card) - keep darker text on top for contrast -->
+            <Style x:Key="HeaderCardStyle" TargetType="Border">
+                <Setter Property="StrokeShape" Value="RoundRectangle 20" />
+                <Setter Property="Background" Value="{StaticResource HeaderGradientBrush}" />
+                <Setter Property="Padding" Value="20" />
+                <Setter Property="Shadow">
+                    <Setter.Value>
+                        <Shadow Brush="#000" Offset="0,8" Opacity="0.10" Radius="24" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Compact control cards with subtle light background -->
+            <Style x:Key="CompactCardStyle" TargetType="Border">
+                <Setter Property="StrokeShape" Value="RoundRectangle 14" />
+                <Setter Property="Background" Value="{StaticResource CompactCardGradientBrush}" />
+                <Setter Property="Padding" Value="12" />
+                <Setter Property="StrokeThickness" Value="0" />
+                <Setter Property="Shadow">
+                    <Setter.Value>
+                        <Shadow Brush="#000" Offset="0,6" Opacity="0.04" Radius="12" />
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <!-- Keep existing useful resources -->
+            <Color x:Key="SuccessColor">#28A745</Color>
+            <Color x:Key="DangerColor">#E55353</Color>
+            <Color x:Key="WarningColor">#FFC107</Color>
+            <Color x:Key="InfoColor">#17A2B8</Color>
+            <Color x:Key="DisabledColor">#E0E0E0</Color>
+
+            <x:Double x:Key="DefaultPadding">15</x:Double>
+            <x:Double x:Key="DefaultCornerRadius">8</x:Double>
+            <CornerRadius x:Key="CardCornerRadius">16</CornerRadius>
+
+            <Style x:Key="PrimaryButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}" />
+                <Setter Property="TextColor" Value="{StaticResource OnPrimaryText}" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="CornerRadius" Value="8" />
+                <Setter Property="HeightRequest" Value="44" />
+                <Setter Property="Padding" Value="12,0" />
+            </Style>
+
+            <Style x:Key="SecondaryButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="TextColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="BorderColor" Value="{StaticResource PrimaryColor}" />
+                <Setter Property="BorderWidth" Value="1" />
+                <Setter Property="CornerRadius" Value="8" />
+                <Setter Property="HeightRequest" Value="44" />
+                <Setter Property="Padding" Value="12,0" />
+            </Style>
+
+            <Style x:Key="EntryStyle" TargetType="Entry">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="{StaticResource TextPrimary}" />
+                <Setter Property="PlaceholderColor" Value="{StaticResource TextSecondary}" />
+                <Setter Property="HeightRequest" Value="44" />
+            </Style>
+
+            <Style x:Key="MutedLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="TextColor" Value="{StaticResource TextSecondary}" />
             </Style>
 
         </ResourceDictionary>
